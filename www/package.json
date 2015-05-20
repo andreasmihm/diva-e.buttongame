@@ -1,8 +1,8 @@
 {
-  "name": "my-app",
-  "description": "My first Tabris.js app",
+  "name": "Spiel für Lina",
+  "description": "Spiel für Lina",
   "main": "app.js",
   "dependencies": {
-    "tabris": "0.9.3"
+    "tabris": "1.0.0"
   }
 }

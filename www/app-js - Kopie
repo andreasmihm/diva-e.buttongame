@@ -1,0 +1,233 @@
+var message;
+
+var page = tabris.create("Page", {
+  title: "Oceanic Flight 815 Booking",
+  topLevel: true
+});
+
+var firstNameTextView = tabris.create("TextView", {
+  layoutData: {left: 10, top: 18, width: 120},
+  alignment: "left",
+  text: "First Name:"
+}).appendTo(page);
+
+var firstNameInput = tabris.create("TextInput", {
+  layoutData: {left: [firstNameTextView, 10], right: 10, baseline: firstNameTextView},
+  message: "First Name"
+}).appendTo(page);
+
+var lastNameTextView = tabris.create("TextView", {
+  layoutData: {left: 10, top: [firstNameTextView, 18], width: 120},
+  text: "Last Name:"
+}).appendTo(page);
+
+var lastNameInput = tabris.create("TextInput", {
+  layoutData: {left: [lastNameTextView, 10], right: 10, baseline: lastNameTextView},
+  message: "Last Name"
+}).appendTo(page);
+
+var passphraseTextView = tabris.create("TextView", {
+  layoutData: {left: 10, top: [lastNameTextView, 18], width: 120},
+  text: "Passphrase:"
+}).appendTo(page);
+
+tabris.create("TextInput", {
+  type: "password",
+  layoutData: {left: [passphraseTextView, 10], right: 10, baseline: passphraseTextView},
+  message: "Passphrase"
+}).appendTo(page);
+
+var countryTextView = tabris.create("TextView", {
+  layoutData: {left: 10, top: [passphraseTextView, 18], width: 120},
+  text: "Country:"
+}).appendTo(page);
+
+tabris.create("Picker", {
+  layoutData: {left: [countryTextView, 10], right: 10, baseline: countryTextView},
+  items: ["Germany", "Canada", "USA", "Bulgaria"]
+}).appendTo(page);
+
+var classTextView = tabris.create("TextView", {
+  layoutData: {left: 10, top: [countryTextView, 18], width: 120},
+  text: "Class:"
+}).appendTo(page);
+
+tabris.create("Picker", {
+  layoutData: {left: [classTextView, 10], right: 10, baseline: classTextView},
+  items: ["Business", "Economy", "Economy Plus"]
+}).appendTo(page);
+
+var seatTextView = tabris.create("TextView", {
+  layoutData: {left: 10, top: [classTextView, 18], width: 120},
+  text: "Seat:"
+}).appendTo(page);
+
+var windowButton = tabris.create("RadioButton", {
+  layoutData: {left: [seatTextView, 10], right: 10, baseline: seatTextView},
+  text: "Window"
+}).appendTo(page);
+
+var aisleButton = tabris.create("RadioButton", {
+  layoutData: {left: [seatTextView, 10], right: 10, top: [seatTextView, 10]},
+  text: "Aisle"
+}).appendTo(page);
+
+var dontCareButton = tabris.create("RadioButton", {
+  layoutData: {left: [seatTextView, 10], right: 10, top: [aisleButton, 10]},
+  text: "Don't care",
+  selection: true
+}).appendTo(page);
+
+var luggagePanel = tabris.create("Composite", {
+  layoutData: {left: 10, top: [dontCareButton, 18], right: 10}
+}).appendTo(page);
+
+var luggageTextView = tabris.create("TextView", {
+  layoutData: {left: 0, centerY: 0, width: 120},
+  text: "Luggage:"
+}).appendTo(luggagePanel);
+
+var luggageWeight = tabris.create("TextView", {
+  layoutData: {right: 10, centerY: 0, width: 50},
+  text: "0 Kg"
+}).appendTo(luggagePanel);
+
+tabris.create("Slider", {
+  layoutData: {left: [luggageTextView, 10], right: [luggageWeight, 10], centerY: 0}
+}).on("change:selection", function() {
+  luggageWeight.set("text", this.get("selection") + " Kg");
+}).appendTo(luggagePanel);
+
+var checkbox = tabris.create("CheckBox", {
+  layoutData: {left: [seatTextView, 10], right: 10, top: [luggagePanel, 10]},
+  text: "Vegetarian"
+}).appendTo(page);
+
+var button = tabris.create("Button", {
+  layoutData: {left: 10, right: 10, top: [checkbox, 18]},
+  text: "Place Reservation",
+  background: "#8b0000",
+  textColor: "white"
+}).on("select", function() {
+  populateMessage();
+}).appendTo(page);
+
+function populateMessage() {
+  if (message) {
+    message.dispose();
+  }
+  message = tabris.create("TextView", {
+    layoutData: {left: 10, right: 10, top: [button, 10]},
+    text: "Flight booked for: " + createName() + "\nSeating: " + createSeating()
+  }).appendTo(page);
+}
+
+function createName() {
+  return [firstNameInput.get("text"), lastNameInput.get("text")].join(" ");
+}
+
+function createSeating() {
+  var seating = "Anywhere";
+  [windowButton, aisleButton].forEach(function(button) {
+    if (button.get("selection")) {
+      seating = button.get("text");
+    }
+  });
+  return seating;
+}
+
+
+
+var MARGIN_SMALL = 4;
+var MARGIN = 8;
+
+var page2 = tabris.create("Page", {
+  topLevel: true,
+  title: "Aud'cuisine"
+});
+
+var scrollView = tabris.create("ScrollView", {
+  layoutData: {left: 0, right: 0, top: 0, bottom: 0}
+}).appendTo(page2);
+
+var imageTextView = tabris.create("ImageView", {
+  layoutData: {left: 0, top: 0, right: 0}
+}).appendTo(scrollView);
+
+var contentComposite = tabris.create("Composite", {
+  layoutData: {left: 0, right: 0, top: ["#titleComposite", 0], height: 1000},
+  background: "white"
+}).appendTo(scrollView);
+
+tabris.create("TextView", {
+  layoutData: {left: MARGIN, right: MARGIN, top: MARGIN},
+  text: "Etiam nisl nisi, egestas quis lacus ut, tristique suscipit metus. In vehicula lectus " +
+        "metus, at accumsan elit fringilla blandit. Integer et quam sed dolor pharetra " +
+        "molestie id eget dui. Donec ac libero eu lectus dapibus placerat eu a tellus. Fusce " +
+        "vulputate ac sem sit amet bibendum. Pellentesque euismod varius purus pharetra. Sed " +
+        "vitae ipsum sit amet risus vehicula euismod in at nunc. Sed in viverra arcu, id " +
+        "blandit. Praesent sagittis quis nisl id molestie. Donec dignissim, nisl id volutpat " +
+        "consectetur, massa diam aliquam lectus, sed euismod leo elit eu justo. Integer vel " +
+        "ante sapien.\n\nNunc sit amet blandit tellus, sed neque. Proin vel elementum augue. " +
+        "Quisque gravida nulla nisl, at fermentum turpis euismod in. Maecenas tortor at ante " +
+        "vulputate iaculis at vitae sem. Nulla dui erat, viverra eget mauris in, sodales " +
+        "mollis. Integer rhoncus suscipit mi in pulvinar. Nam metus augue, dictum a egestas " +
+        "ut, gravida eget ipsum. Nunc nisl, mollis et mauris in, venenatis blandit magna. " +
+        "Nullam scelerisque tellus lacus, in lobortis purus consectetur sed. Etiam pulvinar " +
+        "sapien vel nibh vehicula, in lacinia odio pharetra. Duis tincidunt metus a semper " +
+        "auctor. Sed nec consequat augue, id vulputate orci. Nunc metus nulla, luctus id " +
+        "porttitor nec, sed lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+}).appendTo(contentComposite);
+
+var titleComposite = tabris.create("Composite", {
+  id: "titleComposite",
+  background: "rgba(255,152,0,0.9)"
+}).appendTo(scrollView);
+
+tabris.create("TextView", {
+  markupEnabled: true,
+  text: "<b>The perfect side dish</b>",
+  font: "16px",
+  layoutData: {left: MARGIN, top: MARGIN, right: MARGIN},
+  textColor: "black"
+}).appendTo(titleComposite);
+
+tabris.create("TextView", {
+  layoutData: {left: MARGIN, bottom: MARGIN_SMALL, right: MARGIN},
+  markupEnabled: true,
+  text: "<b>INDIAN SUMMER SALAD</b>",
+  font: "24px",
+  textColor: "white"
+}).appendTo(titleComposite);
+
+var titleCompY = 0;
+scrollView.on("resize", function() {
+  var bounds = scrollView.get("bounds");
+  var page2Width = bounds.width;
+  var page2Height = bounds.height;
+  var imageHeight = page2Width / 1.4; // 1.4 is the image aspect ratio
+  imageTextView.set("image", {src: "images/salad.jpg", width: page2Width, height: page2Width});
+  var titleCompHeight = titleComposite.get("bounds").height;
+  // we need the offset of the title composite in each scroll event
+  // it can only change when a change:bounds is triggered, wo thats when we assign it
+  titleCompY = Math.min(imageHeight - titleCompHeight, page2Height / 2);
+  titleComposite.set("layoutData", {left: 0, top: titleCompY, right: 0, height: 64});
+});
+
+scrollView.on("scroll", function(widget, offset) {
+  imageTextView.set("transform", {translationY: offset.y * 0.4});
+  if (titleCompY - offset.y < 0) {
+    titleComposite.set("transform", {translationY: offset.y - titleCompY});
+  } else {
+    titleComposite.set("transform", {translationY: 0});
+  }
+});
+
+
+
+
+
+
+
+
+page.open();
