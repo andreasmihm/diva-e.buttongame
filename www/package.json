@@ -1,6 +1,6 @@
 {
   "name": "gameforlina",
-  "description": "Spiel fuer Lina",
+  "description": "Spiel für Lina",
   "main": "app.js",
   "dependencies": {
     "tabris": "1.0.0"
