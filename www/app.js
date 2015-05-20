@@ -10,13 +10,13 @@ var page = tabris.create("Page", {
 
 var text = tabris.create("TextView", {
   layoutData: {left: 10, top: 20, right: 10},
-  text: "Hallo Lina, sobald der Button erscheint, dürcke ihn so schnell Du kannst. Das Spiel sagt Dir wie schnell Du warst und merkst sich Deine Bestzeit. Viel Spaß!",
+  text: "Hallo Lina, sobald der Button erscheint, drücke ihn so schnell Du kannst. Das Spiel sagt Dir wie schnell Du warst und merkst sich Deine Bestzeit. Viel Spaß!",
   alignment: "left"
 }).appendTo(page);
 
 
 var text = tabris.create("TextView", {
-  layoutData: {left: 10, top: 80, right: 10},
+  layoutData: {left: 10, top: 120, right: 10},
   text: "Bestzeit:",
   alignment: "left"
 }).appendTo(page);
@@ -36,25 +36,11 @@ tabris.create("Button", {
 }).appendTo(page);
 */
 
-tabris.create("Button", {
+var button = tabris.create("Button", {
   layoutData: {centerX: 0, centerY: 0},
   text: "Press me!"
 }).on("select", function() {
-  var clicktime = Date.now() - time;
-  text2.set("text", "Aktuelle Reaktionszeit: " + clicktime);
-  if (clicktime < bestclick) {
-	bestclick = clicktime;
-	text.set("text", "Bestzeit: " + bestclick);
-  }
-
-  this.set("text", "Bitte warte...");
-  this.set("visible", false);
-  setTimeout(function() {
-    time = Date.now();
-  this.set("layoutData", {centerX: getRandomInt(-100, 100), centerY: getRandomInt(-200, 200)});
-	this.set("text", "GoGoGo!");
-  this.set("visible", true);
-  }.bind(this), 2000);
+  calculateRespone();
 }).appendTo(page);
 
 
@@ -64,5 +50,26 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function calculateRespone() {
+  var clicktime = Date.now() - time;
+  text2.set("text", "Aktuelle Reaktionszeit: " + clicktime);
+  if (clicktime < bestclick) {
+  bestclick = clicktime;
+  text.set("text", "Bestzeit: " + bestclick);
+  }
+  button.dispose();
+  setTimeout(function() {
+    time = Date.now();
+  
+  button = tabris.create("Button", {
+  layoutData: {centerX: getRandomInt(-100, 100), centerY: getRandomInt(-200, 200)},
+  text: "GoGoGo!"
+}).on("select", function() {
+  calculateRespone();
+}).appendTo(page);
+
+  }.bind(text2), 2000);
+
+}
 
 page.open();
