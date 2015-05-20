@@ -1,5 +1,5 @@
 {
-  "name": "Spiel für Lina",
+  "name": "game.for.lina",
   "description": "Spiel für Lina",
   "main": "app.js",
   "dependencies": {
