@@ -54,7 +54,7 @@ tabris.create("Button", {
   var buttonx = getRandomInt(10, 200);
   var buttony = getRandomInt(160, 460);
   //this.set("layoutData", {centerX: getRandomInt(-100, 100), centerY: getRandomInt(-200, 200)});
-  this.set("layoutData", {left: buttonx, top: buttony, width: 80, height: 30});
+  this.set("layoutData", {left: buttonx, top: buttony, width: 100, height: 50});
 	this.set("text", "GoGoGo!");
   this.set("visible", true);
   }.bind(this), 2000);
