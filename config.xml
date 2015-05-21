@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
     id="my.first.app"
-    version="2.0.8"
+    version="2.0.9"
     xmlns:gap="http://phonegap.com/ns/1.0"
     xmlns="http://www.w3.org/ns/widgets"
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
@@ -13,8 +13,16 @@
     <author email="me@me.com" href="http://www.me.me">
         Me
     </author>
- 
-    <access origin="*" />
+	
+	<platform name="android">
+        <icon src="images/drawable-mdpi/ic_game.png" density="mdpi" />
+        <icon src="images/drawable-hdpi/ic_game.png" density="hdpi" />
+        <icon src="images/drawable-xhdpi/ic_game.png" density="xhdpi" />
+        <icon src="images/drawable-xxhdpi/ic_game.png" density="xxhdpi" />
+        <icon src="images/drawable-xxxhdpi/ic_game.png" density="xxxhdpi" />
+    </platform> 
+    
+	<access origin="*" />
  
     <preference name="EnableDeveloperConsole" value="false"/>
 </widget>

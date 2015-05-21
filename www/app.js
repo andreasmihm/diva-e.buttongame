@@ -27,6 +27,17 @@ var text2 = tabris.create("TextView", {
   alignment: "left"
 }).appendTo(page);
 
+
+var touched = 0;
+tabris.create("ImageView", {
+  layoutData: {centerX: 0, centerY: 0},
+  image: {src: "images/am.jpg"},
+  highlightOnTouch: true
+}).on("tap", function() {
+  touched++;
+  //page.set("title", "touched " + touched + " times");
+}).appendTo(page);
+
 /*
 tabris.create("Button", {
   layoutData: {left: 10, top: 10},
