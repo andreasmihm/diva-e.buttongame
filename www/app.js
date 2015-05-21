@@ -28,48 +28,10 @@ var text2 = tabris.create("TextView", {
 }).appendTo(page);
 
 
-var touched = 0;
-tabris.create("ImageView", {
-  layoutData: {centerX: 0, centerY: 0},
-  image: {src: "images/am.jpg"},
-  highlightOnTouch: true
-}).on("tap", function() {
-  touched++;
-  //page.set("title", "touched " + touched + " times");
-}).appendTo(page);
 
-/*
-tabris.create("Button", {
-  layoutData: {left: 10, top: 10},
-  text: "Button"
-}).on("select", function() {
-  this.set("text", "Pressed " + (++round) + " times");
-}).appendTo(page);
-*/
+var imagebutton;
 
-tabris.create("Button", {
-  layoutData: {centerX: 0, centerY: 0},
-  text: "Press me!"
-}).on("select", function() {
-  var clicktime = Date.now() - time;
-  text2.set("text", "Aktuelle Reaktionszeit: " + clicktime);
-  if (clicktime < bestclick) {
-	bestclick = clicktime;
-	text.set("text", "Bestzeit: " + bestclick);
-  }
-
-  this.set("text", "Bitte warte...");
-  this.set("visible", false);
-  setTimeout(function() {
-    time = Date.now();
-  var buttonx = getRandomInt(10, 200);
-  var buttony = getRandomInt(160, 460);
-  //this.set("layoutData", {centerX: getRandomInt(-100, 100), centerY: getRandomInt(-200, 200)});
-  this.set("layoutData", {left: buttonx, top: buttony, width: 100, height: 50});
-	this.set("text", "GoGoGo!");
-  this.set("visible", true);
-  }.bind(this), 2000);
-}).appendTo(page);
+createnewbutton();
 
 
 // Returns a random integer between min (included) and max (excluded)
@@ -78,5 +40,33 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function createnewbutton(){
+  var buttonx = getRandomInt(10, 200);
+  var buttony = getRandomInt(160, 460);
+  var imagenumber = getRandomInt(1, 8);
+
+imagebutton = tabris.create("ImageView", {
+  layoutData: {left: buttonx, top: buttony},
+  image: {src: "images/" + imagenumber + ".jpg"},
+  highlightOnTouch: true
+}).on("tap", function() {
+   imagebutton.dispose();
+   calculateTouchTime();
+}).appendTo(page);
+
+}
+
+function calculateTouchTime(){
+  var clicktime = Date.now() - time;
+  text2.set("text", "Aktuelle Reaktionszeit: " + clicktime);
+  if (clicktime < bestclick) {
+  bestclick = clicktime;
+  text.set("text", "Bestzeit: " + bestclick);
+  }
+  setTimeout(function() {
+    time = Date.now();
+    createnewbutton();
+  }.bind(page), 2000);
+}
 
 page.open();
