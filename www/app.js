@@ -10,7 +10,7 @@ var page = tabris.create("Page", {
 
 var text = tabris.create("TextView", {
   layoutData: {left: 10, top: 20, right: 10},
-  text: "Hallo Lina, sobald der Button erscheint, dürcke ihn so schnell Du kannst. Das Spiel sagt Dir wie schnell Du warst und merkst sich Deine Bestzeit. Viel Spaß!",
+  text: "Hallo Lina, sobald der Button erscheint, drücke ihn so schnell Du kannst. Das Spiel sagt Dir wie schnell Du warst und merkst sich Deine Bestzeit. Viel Spaß!",
   alignment: "left"
 }).appendTo(page);
 

@@ -15,11 +15,11 @@
     </author>
 	
 	<platform name="android">
-        <icon src="images/drawable-mdpi/ic_game.png" density="mdpi" />
-        <icon src="images/drawable-hdpi/ic_game.png" density="hdpi" />
-        <icon src="images/drawable-xhdpi/ic_game.png" density="xhdpi" />
-        <icon src="images/drawable-xxhdpi/ic_game.png" density="xxhdpi" />
-        <icon src="images/drawable-xxxhdpi/ic_game.png" density="xxxhdpi" />
+        <icon src="res/drawable-mdpi/ic_game.png" density="mdpi" />
+        <icon src="res/drawable-hdpi/ic_game.png" density="hdpi" />
+        <icon src="res/drawable-xhdpi/ic_game.png" density="xhdpi" />
+        <icon src="res/drawable-xxhdpi/ic_game.png" density="xxhdpi" />
+        <icon src="res/drawable-xxxhdpi/ic_game.png" density="xxxhdpi" />
     </platform> 
     
 	<access origin="*" />
