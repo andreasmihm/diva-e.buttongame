@@ -47,7 +47,7 @@ function createnewbutton(){
 
 imagebutton = tabris.create("ImageView", {
   layoutData: {left: buttonx, top: buttony},
-  image: {src: "images/" + imagenumber + ".jpg"},
+  image: {src: "images/" + imagenumber + ".JPG"},
   highlightOnTouch: true
 }).on("tap", function() {
    imagebutton.dispose();
