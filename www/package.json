@@ -3,6 +3,6 @@
   "description": "Spiel für Lina",
   "main": "app.js",
   "dependencies": {
-    "tabris": "1.0.0"
+    "tabris": "1.2.0"
   }
 }
