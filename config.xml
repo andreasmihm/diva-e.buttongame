@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget
-    id="my.first.app"
-    version="2.0.10"
+    id="diva-e.game"
+    version="1.0.0"
     xmlns:gap="http://phonegap.com/ns/1.0"
     xmlns="http://www.w3.org/ns/widgets"
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
  
-    <name>Spiel für Lina</name>
+    <name>diva-e game</name>
     <description>
-        Spiel für Lina
+        diva-e game
     </description>
-    <author email="me@me.com" href="http://www.me.me">
-        Me
+    <author email="andreas.mihm@diva-e.com" href="http://www.diva-e.com">
+        Andreas Mihm
     </author>
 	
 	<platform name="android">
-        <icon src="res/drawable-mdpi/ic_game.png" density="mdpi" />
-        <icon src="res/drawable-hdpi/ic_game.png" density="hdpi" />
-        <icon src="res/drawable-xhdpi/ic_game.png" density="xhdpi" />
-        <icon src="res/drawable-xxhdpi/ic_game.png" density="xxhdpi" />
-        <icon src="res/drawable-xxxhdpi/ic_game.png" density="xxxhdpi" />
+        <icon src="res/drawable-mdpi/Icon.png" density="mdpi" />
+        <icon src="res/drawable-hdpi/Icon.png" density="hdpi" />
+        <icon src="res/drawable-xhdpi/Icon.png" density="xhdpi" />
+        <icon src="res/drawable-xxhdpi/Icon.png" density="xxhdpi" />
+        <icon src="res/drawable-xxxhdpi/Icon.png" density="xxxhdpi" />
     </platform> 
     
 	<access origin="*" />

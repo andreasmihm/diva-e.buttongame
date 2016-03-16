@@ -3,14 +3,14 @@ var round = 0;
 var bestclick = 1000;
 
 var page = tabris.create("Page", {
-  title: "Spiel für Lina",
+  title: "diva-e Game",
   topLevel: true
 });
 
 
 var text = tabris.create("TextView", {
   layoutData: {left: 10, top: 20, right: 10},
-  text: "Hallo Lina, sobald das Bild erscheint, drücke es so schnell Du kannst. Das Spiel sagt Dir wie schnell Du warst und merkt sich Deine Bestzeit. Viel Spaß!",
+  text: "Hallo diva, sobald das Bild erscheint, drücke es so schnell Du kannst. Das Spiel sagt Dir wie schnell Du warst und merkt sich Deine Bestzeit. Viel Spaß!",
   alignment: "left"
 }).appendTo(page);
 
@@ -43,7 +43,7 @@ function getRandomInt(min, max) {
 function createnewbutton(){
   var buttonx = getRandomInt(10, 200);
   var buttony = getRandomInt(160, 460);
-  var imagenumber = getRandomInt(1, 8);
+  var imagenumber = getRandomInt(1, 10);
 
 imagebutton = tabris.create("ImageView", {
   layoutData: {left: buttonx, top: buttony},
