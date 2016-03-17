@@ -9,7 +9,7 @@ var page = tabris.create("Page", {
 
 
 var text = tabris.create("TextView", {
-  layoutData: {left: 10, top: 20, right: 10},
+  layoutData: {left: 10, top: 20, right: 140},
   text: "Hallo diva, sobald das Bild erscheint, drücke es so schnell Du kannst. Das Spiel sagt Dir wie schnell Du warst und merkt sich Deine Bestzeit. Viel Spaß!",
   alignment: "left"
 }).appendTo(page);
@@ -26,6 +26,32 @@ var text2 = tabris.create("TextView", {
   text: "Aktuelle Reaktionszeit:",
   alignment: "left"
 }).appendTo(page);
+
+// camera
+
+var button = tabris.create("Button", {
+  layoutData: {width: 100,height: 100, top: 10, right: 10},
+  text: "Du bist?"
+}).appendTo(page).on("select", function() {
+  navigator.camera.getPicture(onSuccess, onFail, {
+    quality: 50,
+    targetWidth: 1024,
+    targetHeight: 1024,
+    destinationType: window.Camera.DestinationType.FILE_URI
+  });
+  function onSuccess(imageUrl) {
+    button.dispose();
+    var imageView = tabris.create("ImageView", {
+      layoutData: {width: 100,height: 100, top: 10, right: 10}
+    }).appendTo(page);
+    imageView.set("image", {src: imageUrl});
+  }
+  function onFail(message) {
+    console.log("Camera failed because: " + message);
+  }
+});
+
+
 
 
 
