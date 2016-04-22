@@ -2,11 +2,18 @@ var time = Date.now();
 var round = 0;
 var bestclick = 1000;
 
+tabris.create("Drawer").append(tabris.create("PageSelector"));
+
+
 var page = tabris.create("Page", {
   title: "diva-e Game",
   topLevel: true
 });
 
+var page2 = tabris.create("Page", {
+  title: "diva-e Info",
+  topLevel: true
+});
 
 var text = tabris.create("TextView", {
   layoutData: {left: 10, top: 20, right: 140},
