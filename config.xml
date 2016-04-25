@@ -14,6 +14,8 @@
         Andreas Mihm
     </author>
 	
+	<gap:plugin name="org.apache.cordova.camera" />
+	
 	<platform name="android">
         <icon src="res/drawable-mdpi/Icon.png" density="mdpi" />
         <icon src="res/drawable-hdpi/Icon.png" density="hdpi" />
