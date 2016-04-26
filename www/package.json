@@ -3,6 +3,6 @@
   "description": "diva-e Game",
   "main": "app.js",
   "dependencies": {
-    "tabris": "1.6.0"
+    "tabris": "1.7.0"
   }
 }
